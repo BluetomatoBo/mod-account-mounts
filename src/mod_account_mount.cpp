@@ -18,8 +18,7 @@ public:
                 ChatHandler(pPlayer->GetSession()).SendSysMessage("This server is running the |cff4CFF00AccountMounts |rmodule.");
             }
             std::vector<uint32> Guids;
-            uint32 playerGUID = pPlayer->GetGUID();
-            QueryResult result1 = CharacterDatabase.PQuery("SELECT guid, race FROM characters WHERE account = %u", playerGUID);
+            QueryResult result1 = CharacterDatabase.PQuery("SELECT guid, race FROM characters WHERE account = %u", pPlayer->GetSession()->GetAccountId());
             if (!result1)
                 return;
 
